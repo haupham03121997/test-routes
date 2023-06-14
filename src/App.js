@@ -1,24 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  Link,
+  Navigate,
+  BrowserRouter as Router,
+  useRoutes,
+} from "react-router-dom";
+
+const Home = () => <h1>Home</h1>;
+const About = () => <h1>About</h1>;
+const Contact = () => <h1>Contact</h1>;
+
+const routes = [
+  {
+    path: "",
+    element: <Home />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "pagea",
+    element: <Contact />,
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
+  },
+];
 
 function App() {
+  const routing = useRoutes(routes);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav>
+               {" "}
+        <ul>
+                   {" "}
+          <li>
+                        <Link to="/">HOME</Link>         {" "}
+          </li>
+                   {" "}
+          <li>
+                        <Link to="/about">ABOUT</Link>         {" "}
+          </li>
+                   {" "}
+          <li>
+                        <Link to="/pagea">CONTACT</Link>         {" "}
+          </li>
+                 {" "}
+        </ul>
+             {" "}
+      </nav>
+            {routing}   {" "}
+    </>
   );
 }
 
