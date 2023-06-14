@@ -8,23 +8,24 @@ import {
 const Home = () => <h1>Home</h1>;
 const About = () => <h1>About</h1>;
 const Contact = () => <h1>Contact</h1>;
-
+const ROUTES = process.env.REACT_APP_PUBLIC_URL;
+console.log(ROUTES);
 const routes = [
   {
-    path: "",
+    path: ROUTES,
     element: <Home />,
   },
   {
-    path: "/about",
+    path: ROUTES + "/about",
     element: <About />,
   },
   {
-    path: "pagea",
+    path: ROUTES + "/pagea",
     element: <Contact />,
   },
   {
     path: "*",
-    element: <Navigate to="/" />,
+    element: <Navigate to={ROUTES} />,
   },
 ];
 
@@ -37,15 +38,15 @@ function App() {
         <ul>
                    {" "}
           <li>
-                        <Link to="/">HOME</Link>         {" "}
+                        <Link to={ROUTES}>HOME</Link>         {" "}
           </li>
                    {" "}
           <li>
-                        <Link to="/about">ABOUT</Link>         {" "}
+                        <Link to={ROUTES + "/about"}>ABOUT</Link>         {" "}
           </li>
                    {" "}
           <li>
-                        <Link to="/pagea">CONTACT</Link>         {" "}
+                        <Link to={ROUTES + "/about"}>CONTACT</Link>         {" "}
           </li>
                  {" "}
         </ul>
